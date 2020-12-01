@@ -1,5 +1,6 @@
 package ru.netology;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -12,7 +13,7 @@ class RadioTest {
     @CsvSource(
             value = {
                     "'current station = 5', 5, 6",
-                    "'current station = max station', 9, 0",
+                    "'current station = max station', 10, 0",
                     "'current station = min station', 0, 1"
             }
     )
@@ -27,8 +28,8 @@ class RadioTest {
     @CsvSource(
             value = {
                     "'current station = 5', 5, 4",
-                    "'current station = max station', 9, 8",
-                    "'current station = min station', 0, 9"
+                    "'current station = max station', 10, 9",
+                    "'current station = min station', 0, 10"
             }
     )
     public void shouldPrevRadioStation(String test, int currentRadioStation, int expectedRadioStation) {
@@ -41,8 +42,8 @@ class RadioTest {
     @ParameterizedTest
     @CsvSource(
             value = {
-                    "'current volume = 5', 5, 6",
-                    "'current volume = max volume', 10, 10",
+                    "'current volume = 57', 57, 58",
+                    "'current volume = max volume', 100, 100",
                     "'current volume = min volume', 0, 1"
             }
     )
@@ -56,8 +57,8 @@ class RadioTest {
     @ParameterizedTest
     @CsvSource(
             value = {
-                    "'current volume = 5', 5, 4",
-                    "'current volume = max volume', 10, 9",
+                    "'current volume = 57', 57, 56",
+                    "'current volume = max volume', 100, 99",
                     "'current volume = min volume', 0, 0"
             }
     )
@@ -67,4 +68,13 @@ class RadioTest {
 
         assertEquals(expectedVolume, radio.getCurrentVolume());
     }
+
+    @Test
+    public void shouldSetMaxRadioStation() {
+        Radio radio = new Radio(13);
+
+        assertEquals(13, radio.getMaxNumberRadioStation());
+    }
+
+
 }
